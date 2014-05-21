@@ -1,0 +1,54 @@
+\documentclass{beamer}
+
+\usetheme{egi}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{cmap}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{fancyvrb,fancybox,calc}
+
+% some helpful definitions
+\definecolor{opennebulablue}{RGB}{0,145,197}
+\definecolor{rubyred}{RGB}{204,52,45}
+
+\newcommand{\opennebul}[1]{Open\textcolor{opennebulablue}{Nebul#1}}
+\newcommand{\rocci}{\textcolor{rubyred}{r}\textcolor{opennebulablue}{OCCI}}
+
+\newcommand\Fontsmaller{\fontsize{8}{9.2}\selectfont}
+\newcommand\Fonttiny{\fontsize{7}{8.2}\selectfont}
+
+\lstset{basicstyle=\footnotesize\ttfamily,
+  numberstyle=\footnotesize\ttfamily,
+  breaklines=true,
+  breakatwhitespace=true,
+  frame=single,
+  numbers=left}
+
+
+%
+\title{Building an OpenNebula Cloud Compliant with EGI FedCloud}
+\subtitle{EGI Community Forum 2014}
+\author{Boris Par\'ak, CESNET}
+\date{2014-05-23, EGI Community Forum 2014, Helsinki}
+
+%\AtBeginPart{\frame{\partpage}}
+
+\begin{document}
+
+\maketitle
+
+\input{overview}
+\input{occi_intro}
+\input{prep_install}
+\input{install_server}
+\input{install_client}
+\input{use_client}
+\input{end_qaa}
+
+\end{document}

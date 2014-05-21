@@ -1,0 +1,94 @@
+\part{Sever Installation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+  \frametitle{Installation}
+  \framesubtitle{rOCCI-server}
+
+  \begin{Sbox}
+  \Fonttiny
+  \begin{minipage}{\linewidth-2\fboxsep-2\fboxrule-4pt}
+  \color{white}
+  \begin{verbatim}
+~# yum install -y occi-server
+
+~# /opt/occi-server/embedded/bin/passenger-install-apache2-module \
+   --auto --languages ruby
+~# /opt/occi-server/embedded/bin/passenger-install-apache2-module \
+   --snippet > /etc/httpd/conf.d/passenger.conf
+
+~# echo "Listen 11443" >> /etc/httpd/conf/httpd.conf
+  \end{verbatim}
+  \end{minipage}
+  \end{Sbox}
+  \fcolorbox{black}{black}{\TheSbox}
+
+  \hfill\\
+
+  \begin{Sbox}
+  \Fonttiny
+  \begin{minipage}{\linewidth-2\fboxsep-2\fboxrule-4pt}
+  \color{white}
+  \begin{verbatim}
+~# sed -i 's/SELINUX\s*=\s*enforcing/SELINUX=permissive/' \
+          /etc/selinux/config
+~# setenforce 0
+  \end{verbatim}
+  \end{minipage}
+  \end{Sbox}
+  \fcolorbox{black}{black}{\TheSbox}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+  \frametitle{Configuration}
+  \framesubtitle{rOCCI-server}
+
+  \begin{Sbox}
+  \Fontsmaller
+  \begin{minipage}{\linewidth-2\fboxsep-2\fboxrule-4pt}
+  \color{white}
+  \begin{verbatim}
+~# su - oneadmin
+~$ oneuser create rocci '<actual_password_edited_out>' \
+   --driver server_cipher
+~$ oneuser chgrp rocci oneadmin
+~$ exit
+  \end{verbatim}
+  \end{minipage}
+  \end{Sbox}
+  \fcolorbox{black}{black}{\TheSbox}
+
+  \hfill \\
+
+  \begin{Sbox}
+  \Fontsmaller
+  \begin{minipage}{\linewidth-2\fboxsep-2\fboxrule-4pt}
+  \color{white}
+  \begin{verbatim}
+~# vim /etc/httpd/conf.d/occi-ssl
+  \end{verbatim}
+  \end{minipage}
+  \end{Sbox}
+  \fcolorbox{black}{black}{\TheSbox}
+
+  \hfill \\
+
+  \begin{center}
+    Remove SSL directives, change protocol to \textbf{http}, authentication\\
+    method to \textbf{basic} and the backend to \textbf{opennebula}.
+  \end{center}
+
+  \hfill \\
+
+  \begin{Sbox}
+  \Fontsmaller
+  \begin{minipage}{\linewidth-2\fboxsep-2\fboxrule-4pt}
+  \color{white}
+  \begin{verbatim}
+~# service httpd restart
+  \end{verbatim}
+  \end{minipage}
+  \end{Sbox}
+  \fcolorbox{black}{black}{\TheSbox}
+\end{frame}
