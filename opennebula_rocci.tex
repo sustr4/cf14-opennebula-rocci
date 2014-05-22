@@ -11,6 +11,7 @@
 \usepackage{color}
 \usepackage{url}
 \usepackage{hyperref}
+\usepackage{verbatim}
 \usepackage{fancyvrb,fancybox,calc}
 \usepackage{upquote}
 
@@ -23,6 +24,19 @@
 
 \newcommand\Fontsmaller{\fontsize{8}{9.2}\selectfont}
 \newcommand\Fonttiny{\fontsize{7}{8.2}\selectfont}
+
+\newcommand{\terminalbox}[2][\Fontsmaller]{
+  \begin{Sbox}
+  #1
+  \begin{minipage}{\linewidth-2\fboxsep-2\fboxrule-4pt}
+  \color{white}
+  \begin{verbatim}
+#2
+  \end{verbatim}
+  \end{minipage}
+  \end{Sbox}
+  \fcolorbox{black}{black}{\TheSbox}
+}
 
 \lstset{basicstyle=\footnotesize\ttfamily,
   numberstyle=\footnotesize\ttfamily,
