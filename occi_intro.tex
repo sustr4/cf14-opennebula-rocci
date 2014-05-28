@@ -66,36 +66,6 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[fragile]
-  \frametitle{OCCI}
-  \framesubtitle{HTTP Rendering}
-
-  \Fontsmaller
-  \begin{Sbox}
-  \begin{minipage}{\linewidth-2\fboxsep-2\fboxrule-4pt}
-  \color{white}
-  \begin{verbatim}
-POST /compute/ HTTP/1.1
-
-Category: compute;
-          scheme="http://.../occi/infrastructure#";
-          class="kind"
-Category: debian7;
-          scheme="http://.../infrastructure/os_tpl#";
-          class="mixin"
-Category: small;
-          scheme="http://.../infrastructure/resource_tpl#";
-          class="mixin"
-X-OCCI-Attribute: occi.core.title="TestROCCI1"
-X-OCCI-Attribute: occi.compute.cores=2
-X-OCCI-Attribute: occi.compute.memory=1.7
-  \end{verbatim}
-  \end{minipage}
-  \end{Sbox}
-  \fcolorbox{black}{black}{\TheSbox}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
   \frametitle{OCCI}
   \framesubtitle{The rOCCI framework}
