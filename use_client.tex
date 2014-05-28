@@ -10,11 +10,7 @@
     Insert a valid username \& password as needed!
   \end{center}
 
-  \begin{Sbox}
-  \Fontsmaller
-  \begin{minipage}{\linewidth-2\fboxsep-2\fboxrule-4pt}
-  \color{white}
-  \begin{verbatim}
+\begin{terminalbox}{}
 ~# occi --endpoint http://localhost:11443/ --action list \
         --resource os_tpl --auth basic --username onetest-admin \
         --password onetest-admin
@@ -29,8 +25,6 @@
 
 ~# occi ... --action describe --resource /compute/0 ...
 ~# occi ... --action delete --resource /compute/0 ...
-  \end{verbatim}
-  \end{minipage}
-  \end{Sbox}
-  \fcolorbox{black}{black}{\TheSbox}
+\end{terminalbox}
+
 \end{frame}

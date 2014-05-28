@@ -5,11 +5,7 @@
   \frametitle{Installation}
   \framesubtitle{rOCCI-server}
 
-  \begin{Sbox}
-  \Fonttiny
-  \begin{minipage}{\linewidth-2\fboxsep-2\fboxrule-4pt}
-  \color{white}
-  \begin{verbatim}
+\begin{terminalbox}{\Fonttiny}
 ~# yum install -y occi-server
 
 ~# /opt/occi-server/embedded/bin/passenger-install-apache2-module \
@@ -18,25 +14,15 @@
    --snippet > /etc/httpd/conf.d/passenger.conf
 
 ~# echo "Listen 11443" >> /etc/httpd/conf/httpd.conf
-  \end{verbatim}
-  \end{minipage}
-  \end{Sbox}
-  \fcolorbox{black}{black}{\TheSbox}
+\end{terminalbox}
 
   \hfill\\
 
-  \begin{Sbox}
-  \Fonttiny
-  \begin{minipage}{\linewidth-2\fboxsep-2\fboxrule-4pt}
-  \color{white}
-  \begin{verbatim}
+\begin{terminalbox}{\Fonttiny}
 ~# sed -i 's/SELINUX\s*=\s*enforcing/SELINUX=permissive/' \
           /etc/selinux/config
 ~# setenforce 0
-  \end{verbatim}
-  \end{minipage}
-  \end{Sbox}
-  \fcolorbox{black}{black}{\TheSbox}
+\end{terminalbox}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -44,33 +30,19 @@
   \frametitle{Configuration}
   \framesubtitle{rOCCI-server I.}
 
-  \begin{Sbox}
-  \Fontsmaller
-  \begin{minipage}{\linewidth-2\fboxsep-2\fboxrule-4pt}
-  \color{white}
-  \begin{verbatim}
+\begin{terminalbox}{}
 ~# su - oneadmin
 ~$ oneuser create rocci '<actual_password_edited_out>' \
    --driver server_cipher
 ~$ oneuser chgrp rocci oneadmin
 ~$ exit
-  \end{verbatim}
-  \end{minipage}
-  \end{Sbox}
-  \fcolorbox{black}{black}{\TheSbox}
+\end{terminalbox}
 
   \hfill \\
 
-  \begin{Sbox}
-  \Fontsmaller
-  \begin{minipage}{\linewidth-2\fboxsep-2\fboxrule-4pt}
-  \color{white}
-  \begin{verbatim}
-~# vim /etc/httpd/conf.d/occi-ssl
-  \end{verbatim}
-  \end{minipage}
-  \end{Sbox}
-  \fcolorbox{black}{black}{\TheSbox}
+\begin{terminalbox}{}
+~# vim /etc/httpd/conf.d/occi-ssl.conf
+\end{terminalbox}
 
   \begin{center}
     Remove SSL directives, change protocol to \textbf{http}, authentication
@@ -78,16 +50,11 @@
     to \textbf{opennebula}. Fill in the authentication information for ONE.
   \end{center}
 
-  \begin{Sbox}
-  \Fontsmaller
-  \begin{minipage}{\linewidth-2\fboxsep-2\fboxrule-4pt}
-  \color{white}
-  \begin{verbatim}
+  \hfill \\
+
+\begin{terminalbox}{}
 ~# service httpd restart
-  \end{verbatim}
-  \end{minipage}
-  \end{Sbox}
-  \fcolorbox{black}{black}{\TheSbox}
+\end{terminalbox}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -95,11 +62,7 @@
   \frametitle{Configuration}
   \framesubtitle{rOCCI-server II.}
 
-  \begin{Sbox}
-  \Fonttiny
-  \begin{minipage}{\linewidth-2\fboxsep-2\fboxrule-4pt}
-  \color{white}
-  \begin{verbatim}
+\begin{terminalbox}{\Fonttiny}
 # configuration for rOCCI-server
 ## common
 SetEnv ROCCI_SERVER_LOG_DIR /var/log/occi-server
@@ -120,8 +83,5 @@ SetEnv ROCCI_SERVER_MEMCACHES             localhost:11211
 SetEnv ROCCI_SERVER_ONE_XMLRPC  http://localhost:2633/RPC2
 SetEnv ROCCI_SERVER_ONE_USER    rocci
 SetEnv ROCCI_SERVER_ONE_PASSWD  herebedragonsandasupersecretpassword;)
-  \end{verbatim}
-  \end{minipage}
-  \end{Sbox}
-  \fcolorbox{black}{black}{\TheSbox}
+\end{terminalbox}
 \end{frame}
