@@ -2,6 +2,10 @@
 % Adapted from EGEE3 theme
 % by David O'Callaghan <david.ocallaghan@cs.tcd.ie>, 2011
 \usepackage{helvet}
+\usepackage{verbatim}
+\usepackage{fancyvrb,fancybox,calc}
+\usepackage{upquote}
+\usepackage{listings}
 \mode<presentation>
 
 \newdimen\head@height
@@ -14,9 +18,12 @@
 \definecolor{egigrey50}{RGB}{128,128,128}
 \definecolor{egigrey60}{RGB}{153,153,153}
 \definecolor{egigrey70}{RGB}{179,179,179}
+\definecolor{opennebulablue}{RGB}{0,145,197}
+\definecolor{rubyred}{RGB}{204,52,45}
 \setbeamercolor{section in head}{fg=white,bg=egiblue}
 \setbeamercolor{egi in head}{fg=white,bg=egiblue}
 \setbeamercolor{date in foot}{fg=white,bg=egiblue}
+\setbeamercolor{blackbox}{fg=white,bg=black}
 
 \setbeamertemplate{navigation symbols}{}
 
@@ -100,3 +107,37 @@
         \includegraphics[width=36pt]{EU.png}
     }
 }
+
+\newcommand{\opennebul}[1]{Open\textcolor{opennebulablue}{Nebul#1}}
+\newcommand{\rocci}{\textcolor{rubyred}{r}\textcolor{opennebulablue}{OCCI}}
+
+\newcommand\Fontsmaller{\fontsize{8}{9.2}\selectfont}
+\newcommand\Fonttiny{\fontsize{7}{8.2}\selectfont}
+
+\newenvironment{terminalbox}[1]
+  {
+    \ifx&#1&%
+      \Fontsmaller
+    \else
+      #1
+    \fi
+    \VerbatimEnvironment
+    \begin{beamercolorbox}{blackbox}
+    \hfill\begin{minipage}{\linewidth-6pt}
+    \vskip 3pt
+    \begin{Verbatim}
+  }
+  {
+    \end{Verbatim}
+    \end{minipage}\hfill\null
+    \vskip \baselineskip
+    \end{beamercolorbox}
+  }
+
+\lstset{basicstyle=\footnotesize\ttfamily,
+  numberstyle=\footnotesize\ttfamily,
+  breaklines=true,
+  breakatwhitespace=true,
+  frame=single,
+  numbers=left}
+

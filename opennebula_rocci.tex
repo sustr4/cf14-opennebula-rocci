@@ -11,48 +11,6 @@
 \usepackage{color}
 \usepackage{url}
 \usepackage{hyperref}
-\usepackage{verbatim}
-\usepackage{fancyvrb,fancybox,calc}
-\usepackage{upquote}
-
-% some helpful definitions
-\definecolor{opennebulablue}{RGB}{0,145,197}
-\definecolor{rubyred}{RGB}{204,52,45}
-\setbeamercolor{blackbox}{fg=white,bg=black}
-
-\newcommand{\opennebul}[1]{Open\textcolor{opennebulablue}{Nebul#1}}
-\newcommand{\rocci}{\textcolor{rubyred}{r}\textcolor{opennebulablue}{OCCI}}
-
-\newcommand\Fontsmaller{\fontsize{8}{9.2}\selectfont}
-\newcommand\Fonttiny{\fontsize{7}{8.2}\selectfont}
-
-\newenvironment{terminalbox}[1]
-  {
-    \ifx&#1&%
-      \Fontsmaller
-    \else
-      #1
-    \fi
-    \VerbatimEnvironment
-    \begin{beamercolorbox}{blackbox}
-    \hfill\begin{minipage}{\linewidth-6pt}
-    \vskip 3pt
-    \begin{Verbatim}
-  }
-  {
-    \end{Verbatim}
-    \end{minipage}\hfill\null
-    \vskip \baselineskip
-    \end{beamercolorbox}
-  }
-
-\lstset{basicstyle=\footnotesize\ttfamily,
-  numberstyle=\footnotesize\ttfamily,
-  breaklines=true,
-  breakatwhitespace=true,
-  frame=single,
-  numbers=left}
-
 
 %
 \title{Building an OpenNebula Cloud Compliant with EGI FedCloud}
